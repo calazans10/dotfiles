@@ -1,0 +1,37 @@
+[user]
+  name = Jeferson Farias Calazans
+  email = calazans10@gmail.com
+[apply]
+  whitespace = nowarn
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[branch]
+  autosetupmerge = true
+[core]
+  editor = subl -w
+	excludesfile = /home/calazans/.gitignore
+[push]
+  default = current
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 731x449+0+24
+	history-view-vpane-position = 469
+	file-view-vpane-position = 700
+	main-window-view = HistoryView
+[alias]
+	gl = log --graph --pretty=oneline --abbrev-commit
