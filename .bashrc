@@ -82,6 +82,11 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# some aliases for myfreecomm
+alias fs='bundle exec foreman start -f Procfile.development'
+alias integrate="RAILS_ENV=test time rake integrate"
+
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -103,13 +108,36 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-echo '[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"' >> ~/.bashrc
+# Git prompt function that returns (branch) ou (branch*)
+git_prompt ()
+{
+  if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    return 0
+  fi
+  git_branch=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
 
+  if git diff --quiet 2>/dev/null >&2; then
+    git_color="\033[33;33m"
+    git_append=""
+  else
+    git_color="\033[01;31m"
+    git_append="*"
+  fi
+
+  echo -e " $git_color$git_branch$git_append"
+}
+
+source ~/.rails-completion.bash
+source ~/.rake-completion.bash
 source ~/.git-completion.bash
-GIT_PS1_SHOWDIRTYSTATE=true
-export PS1='\[\033[01;34m\]\u\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\](\[\033[33;31m\]$(~/.rvm/bin/rvm-prompt i v g)\[\033[33;33m\]$(__git_ps1 " %s")\[\033[00m\])\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\n$ '
 
-alias fs='bundle exec foreman start -f Procfile.development'
+
+GIT_PS1_SHOWDIRTYSTATE=true
+export PS1='\[\033[01;34m\]\u\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\](\[\033[33;31m\]$(~/.rvm/bin/rvm-prompt i v g)\[\033[33;33m\]$(git_prompt)\[\033[00m\])\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\n$ '
+
+
+
+
 [[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
 [[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
 
@@ -251,69 +279,5 @@ function mf-rails-console-sandbox() {
 function mf-rails-console-production() {
   __mf-rails-console "myfinance-prod-ELB-10E1045ZCLZ8Z" "production"
 }
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
-[[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
+
 [[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
