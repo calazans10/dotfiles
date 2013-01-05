@@ -40,12 +40,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+  # We have color support; assume it's compliant with Ecma-48
+  # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+  # a case would tend to support setf rather than setaf.)
+  color_prompt=yes
     else
-	color_prompt=
+  color_prompt=
     fi
 fi
 
@@ -110,16 +110,17 @@ git_prompt ()
     return 0
   fi
   git_branch=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
+  git_prim_color="\033[01;36m"
 
   if git diff --quiet 2>/dev/null >&2; then
-    git_color="\033[33;33m"
+    git_color="\033[01;32m"
     git_append=""
   else
     git_color="\033[01;31m"
     git_append="*"
   fi
 
-  echo -e " $git_color$git_branch$git_append"
+  echo -e "$git_prim_color(""$git_color$git_branch$git_append""$git_prim_color)"
 }
 
 source ~/.rails-completion.bash
@@ -127,6 +128,18 @@ source ~/.rake-completion.bash
 source ~/.git-completion.bash
 
 GIT_PS1_SHOWDIRTYSTATE=true
-export PS1='\[\033[01;34m\]\u\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\](\[\033[33;31m\]$(~/.rvm/bin/rvm-prompt i v g)\[\033[33;33m\]$(git_prompt)\[\033[00m\])\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\n$ '
+export PS1='\[\033[0;32m\]\u\[\033[0m\]@\[\033[0;36m\]\h\[\033[00m\]\[\033[33;33m\]$(git_prompt)\[\033[00m\]\[\033[0m\]:\[\033[01;34m\]\w\[\033[00m\]\n$ '
 
 [[ -s "/home/calazans/.rvm/scripts/rvm" ]] && source "/home/calazans/.rvm/scripts/rvm"
+
+########################
+##       PYTHON       ##
+########################
+
+export PIP_REQUIRE_VIRTUALENV=true
+export PIP_RESPECT_VIRTUALENV=true
+
+source /usr/local/bin/virtualenvwrapper.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
