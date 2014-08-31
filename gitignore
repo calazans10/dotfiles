@@ -1,0 +1,14 @@
+node_modules
+
+#packing-only formats
+*.iso
+
+#package management formats
+*.dmg
+*.xpi
+*.gem
+*.egg
+*.deb
+*.rpm
+
+.DS_Store

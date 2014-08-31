@@ -1,0 +1,17 @@
+alias zshconfig="subl ~/.zshrc"
+alias zshupdate="source ~/.zshrc"
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias ls='ls --color=auto'
+
+alias clear-pyc='find . -name "*.pyc" -exec rm -rf {} \;'
+
+alias runserver='./manage.py runserver'
+alias console='./manage.py shell_plus'
+
+alias ga="git add ."
+alias gc='git commit -am'
+alias gd='git diff'
+alias gs='git status'

@@ -1,6 +1,3 @@
-[user]
-  name = Jeferson Farias Calazans
-  email = calazans10@gmail.com
 [apply]
   whitespace = nowarn
 [color]
@@ -24,14 +21,24 @@
   autosetupmerge = true
 [core]
   editor = subl -w
-	excludesfile = /home/calazans/.gitignore
+  autocrlf = input
+  safecrlf = true
+  excludesfile = /home/calazans/.gitignore
 [push]
   default = current
-[giggle]
-	main-window-maximized = true
-	main-window-geometry = 731x449+0+24
-	history-view-vpane-position = 469
-	file-view-vpane-position = 700
-	main-window-view = HistoryView
 [alias]
-	gl = log --graph --pretty=oneline --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  who = shortlog -s --
+[help]
+  autocorrect = 1
+[user]
+  name = Jeferson Farias Calazans
+  email = calazans10@gmail.com
+[github]
+  user = calazans10
+[giggle]
+  main-window-maximized = true
+  main-window-geometry = 731x449+0+24
+  history-view-vpane-position = 469
+  file-view-vpane-position = 700
+  main-window-view = HistoryView
