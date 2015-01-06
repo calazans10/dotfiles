@@ -8,9 +8,6 @@ alias ls='ls --color=auto'
 
 alias clear-pyc='find . -name "*.pyc" -exec rm -rf {} \;'
 
-alias runserver='./manage.py runserver'
-alias console='./manage.py shell_plus'
-
 alias ga="git add"
 alias gb='git branch'
 alias gc='git commit'
