@@ -1,9 +1,5 @@
-# Load plugins (only those I whitelist)
-Pry.config.should_load_plugins = false
-Pry.plugins["doc"].activate!
-Pry.plugins["nav"].activate!
+Pry.config.editor = ENV.fetch("EDITOR", "subl -w")
 
-Pry.config.history.file = "~/.irb_history"
 Pry.config.prompt = proc do |obj, level, _|
   prompt = ""
   prompt << "#{Rails.version}@" if defined?(Rails)
@@ -29,13 +25,19 @@ if defined?(Rails)
 end
 
 begin
-  require 'awesome_print'
-  Pry.config.print = proc { |output, value| output.puts value.ai }
+  require 'pry-meta'
+
+  Pry.config.print = proc do |output, value|
+    Pry::Helpers::BaseHelpers
+      .stagger_output("=> #{value.ai}", output)
+  end
 rescue LoadError => err
-  puts "no awesome_print :("
+  puts "Unable to load pry-meta"
 end
 
-Pry.commands.alias_command 'c', 'continue'
-Pry.commands.alias_command 's', 'step'
-Pry.commands.alias_command 'n', 'next'
-Pry.commands.alias_command 'l', 'whereami'
+if defined?(PryByebug)
+  Pry.commands.alias_command 'c', 'continue'
+  Pry.commands.alias_command 's', 'step'
+  Pry.commands.alias_command 'n', 'next'
+  Pry.commands.alias_command 'f', 'finish'
+end

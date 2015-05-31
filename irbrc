@@ -3,7 +3,7 @@ if defined?(ActiveRecord)
 end
 
 begin
-  require 'pry'
+  require 'pry-meta'
   Pry.start
   exit
 rescue LoadError => e

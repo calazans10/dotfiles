@@ -23,13 +23,12 @@
   editor = subl -w
   autocrlf = input
   safecrlf = true
-  excludesfile = /home/calazans/.gitignore
+  excludesfile = /Users/calazans/.gitignore
 [push]
   default = current
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   who = shortlog -s --
-  url =! bash -c 'git config --get remote.origin.url | sed -E "s/.+:\\(.+\\)\\.git$/https:\\\\/\\\\/github\\\\.com\\\\/\\\\1/g"'
 [help]
   autocorrect = 1
 [user]
@@ -37,9 +36,3 @@
   email = calazans10@gmail.com
 [github]
   user = calazans10
-[giggle]
-  main-window-maximized = true
-  main-window-geometry = 731x449+0+24
-  history-view-vpane-position = 469
-  file-view-vpane-position = 700
-  main-window-view = HistoryView
