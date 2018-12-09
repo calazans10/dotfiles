@@ -20,10 +20,10 @@
 [branch]
   autosetupmerge = true
 [core]
-  editor = subl -w
-  autocrlf = input
+	editor = vim
+	autocrlf = false
   safecrlf = true
-  excludesfile = /Users/calazans/.gitignore
+	excludesfile = /Users/calazans/.gitignore_global
 [push]
   default = current
 [alias]
@@ -32,7 +32,9 @@
 [help]
   autocorrect = 1
 [user]
-  name = Jeferson Farias Calazans
-  email = calazans10@gmail.com
+	name = Jeferson Farias Calazans
+	email = calazans10@gmail.com
 [github]
   user = calazans10
+[credential]
+	helper = osxkeychain

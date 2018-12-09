@@ -1,0 +1,29 @@
+# Numerous always-ignore extensions
+*.deb
+*.diff
+*.dmg
+*.err
+*.egg
+*.gem
+*.iso
+*.log
+*.orig
+*.pyc
+*.rej
+*.rpm
+*.swo
+*.swp
+*.vi
+*.xpi
+*~
+*.sass-cache
+
+# OS or Editor folders
+.DS_Store
+.cache
+.project
+.settings
+.tmproj
+nbproject
+Thumbs.db
+Desktop.ini
